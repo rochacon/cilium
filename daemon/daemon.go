@@ -756,6 +756,7 @@ func NewDaemon(dp datapath.Datapath, iptablesManager rulesManager) (*Daemon, *en
 		nodeDiscovery:     nodediscovery.NewNodeDiscovery(nodeMngr, mtuConfig),
 		iptablesManager:   iptablesManager,
 	}
+	d.policy.ProxyOwner = &d
 
 	if option.Config.RunMonitorAgent {
 		monitorAgent, err := monitoragent.NewAgent(context.TODO(), defaults.MonitorBufferPages)
